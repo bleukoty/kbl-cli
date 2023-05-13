@@ -1,0 +1,25 @@
+import Express  from "express";
+
+const router = Express.Router();
+
+router.get("/sign-in", (req, res) => {
+
+});
+
+router.get("/sign-up", (req, res) => {
+    
+});
+
+router.get("/change-password", (req, res) => {
+    
+});
+
+router.get("/init-change-password", (req, res) => {
+    
+});
+
+router.get("/refresh-token", (req, res) => {
+    
+});
+
+export default router;

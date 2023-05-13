@@ -1,4 +1,5 @@
 import path from "path";
+import childProcess from 'child_process';
 
 /**
  * Sleep function freeze the system during a period of time passed 
@@ -6,7 +7,7 @@ import path from "path";
  * @param {*} ms -- milliseconds 
  * @returns 
  */
-export const sleep = (ms=2000) => new Promise((resolve, reject) => {
+export const sleep = (ms=500) => new Promise((resolve, reject) => {
     setTimeout(() => resolve(true), ms)
 });
 
@@ -17,4 +18,13 @@ export const sleep = (ms=2000) => new Promise((resolve, reject) => {
  */
 export const resolvePath = (...paths: string[]) => {
     return path.resolve(__dirname, ...paths);
+}
+
+export const getUserCurrentFolder = () => {
+    return new Promise((resolve, reject) => {
+         childProcess.exec("pwd", (error:any, stdout:any, stderr:any) => {
+            resolve(stdout);
+         });
+    });
+
 }
