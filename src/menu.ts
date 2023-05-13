@@ -26,7 +26,16 @@ export async function displayMenu() {
         console.log("you are too hurry, we only are on version 1.0.0 😅");
         process.exit(0);
     }
+
+    const queryAppPort = await inquirer.prompt({
+        name:"appPort",
+        type:"number",
+        message:"Please enter a valid port",
+        default() {
+            return "Default port = 3000";
+        }
+    })
     
-    createExpressApp(queryAppName.appName, queryAppType.appType);
+    createExpressApp(queryAppName.appName, queryAppType.appType, queryAppPort.appPort);
 
 }

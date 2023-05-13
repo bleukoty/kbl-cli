@@ -4,14 +4,14 @@
     "description": "an helpful cli for build a secure app",
     "main": "index.js",
     "scripts": {
-        "start": "node build/index",
+        "start": "rm -rf output/* -y && tsc && node build/index",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "kjbleu@everest-consulting.org",
     "license": "ISC",
     "dependencies": {
         "@types/inquirer": "^8.2.6",
-        "chalk-animation": "^2.0.3",
+        "chalk": "^4.1.2",
         "express": "^4.18.2",
         "inquirer": "^8.2.5"
     },

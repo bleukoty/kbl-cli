@@ -1,0 +1,15 @@
+## KBL-cli
+
+### Description
+
+kbl-cli is an help-full tool who facilitate code generation for express and java app
+
+### Goals achieved
+
+- Create a simple express app, customize with app's name and port 
+
+### Road-map
+
+- Add Routes, Entities, and DataAccess
+- Add Security
+- Generates Api documentation

@@ -1,10 +1,10 @@
 import express from "express";
 
 const app = express();
-const WELCOME_APP = "Welcome on my-app rest api";
+const WELCOME_APP = "Welcome on #app_name rest api";
 
 app.get("/", (req :any, res :any) => {
     res.send(WELCOME_APP).status(200);
 });
 
-app.listen(3000, () => console.log("app is running..."));
+app.listen(#app_port, () => console.log("app is running..."));
