@@ -14,6 +14,11 @@ export async function createExpressApp(appName: string, appType: string, appPort
     var app_tmp_index = path.resolve(APP_FOLDER, "index.tmp.ts");
     var app_index = path.resolve(APP_FOLDER, "index.ts");
     
+    // childProcess.exec("sh " + path.resolve(CMD_FOLDER,"test.sh"), (error: any, stdout:any, stderr: any) => {
+    //     if(error != null) console.log("error", error);
+    //     console.log("stdout ", stdout);
+    // });
+    
     // 1. create a folder
     fs.mkdirSync(APP_FOLDER);
 
@@ -45,6 +50,7 @@ export async function createExpressApp(appName: string, appType: string, appPort
 }
 
 function substituteExpression (appName: string, appPort: number, app_tmp_index: string, app_index: string) {
+    // index.js package.json 
     const substituteExpressCmd = path.resolve(CMD_FOLDER, `substitute-expression.sh ${app_tmp_index} ${appName} ${appPort} ${app_index}`);
     return new Promise((resolve, reject) => {
         childProcess.exec(substituteExpressCmd,  (error:any, stdout:any, stderr:any) => {

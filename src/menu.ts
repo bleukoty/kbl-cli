@@ -1,7 +1,11 @@
 import inquirer from "inquirer";
 import {createExpressApp} from "./actions";
+import nanospinner from "nanospinner";
 
 export async function displayMenu() {
+    var s = nanospinner.createSpinner("est");
+    s.start();
+    s.success()
 
     const queryAppType = await inquirer.prompt({
         name: "appType",
