@@ -3,10 +3,7 @@ import {createExpressApp} from "./actions";
 import nanospinner from "nanospinner";
 
 export async function displayMenu() {
-    var s = nanospinner.createSpinner("est");
-    s.start();
-    s.success()
-
+    
     const queryAppType = await inquirer.prompt({
         name: "appType",
         type: "list",
@@ -36,7 +33,7 @@ export async function displayMenu() {
         type:"number",
         message:"Please enter a valid port",
         default() {
-            return "Default port = 3000";
+            return 3000;
         }
     })
     

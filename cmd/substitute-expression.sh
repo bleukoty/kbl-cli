@@ -1,18 +1,18 @@
 #!/bin/sh
 
-# retrieve paramters
-app_tmp_file=$1
-app_name=$2;
-app_port=$3;
-app_index=$4;
+# Get parameters (word to replace) (new word) (all files where iterate)
+old_term=$1
+new_term=$2
+shift
+shift
+files=$@
 
-echo "file : $1";
-echo "name : $2";
-echo "port : $3";
-echo "file index 2 : $4";
-
-# Change app_name | change app_port | create new file
-sed "s/#app_name/$app_name/g" $app_tmp_file | sed "s/#app_port/$app_port/g" > $app_index;
-
-# Remove template file copy
-rm -f $app_tmp_file;
+# Process all files
+for file in $files; do
+    # Create temporary file
+    cp $file "$file.tmp"
+    # Substitute old_term by new_term
+    sed "s/$old_term/$new_term/g" "$file.tmp" > "$file"
+    # Remove temporary file
+    rm -f "$file.tmp"
+done;
