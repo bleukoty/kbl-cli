@@ -4,6 +4,17 @@
 
 kbl-cli is an help-full tool who facilitate code generation for express and java app
 
+### Installation
+
+```
+    npm i -g kbl-cli
+```
+
+### Usage
+```
+    kbl-cli
+```
+
 ### Goals achieved
 
 - Create a simple express app, customize with app's name and port 

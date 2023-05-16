@@ -1,4 +1,5 @@
 import express from "express";
+import { AuthenticationRoutes } from "./routes";
 
 const app = express();
 const WELCOME_APP = "Welcome on app_name rest api";
@@ -6,5 +7,8 @@ const WELCOME_APP = "Welcome on app_name rest api";
 app.get("/", (req :any, res :any) => {
     res.send(WELCOME_APP).status(200);
 });
+
+// Set routes
+app.use("/auth", AuthenticationRoutes);
 
 app.listen(app_port, () => console.log("app is running..."));

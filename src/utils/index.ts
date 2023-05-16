@@ -7,7 +7,7 @@ import childProcess from 'child_process';
  * @param {*} ms -- milliseconds 
  * @returns 
  */
-export const sleep = (ms=500) => new Promise((resolve, reject) => {
+export const sleep = (ms=100) => new Promise((resolve, reject) => {
     setTimeout(() => resolve(true), ms)
 });
 

@@ -1,9 +1,12 @@
 import { sleep } from "./utils";
-import chalk from "chalk";
+import figlet from "figlet";
+import gradient = require("gradient-string");
 
 const GREETINGS = "Welcome to kbl-cli";
 
 export default async function welcome() {
-    console.log(chalk.blue(GREETINGS));
+    figlet(GREETINGS, (error: any, data: any) => {
+        console.log(gradient.pastel.multiline("Welcome to kbl-cli..."));
+    });
     await sleep();
 }
