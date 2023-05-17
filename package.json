@@ -4,7 +4,7 @@
     "description": "an helpful cli for build a secure app",
     "main": "index.js",
     "scripts": {
-        "start": "rm -rf output/* -y && tsc && node build/index",
+        "start": "npm run build && node build/index",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc && npm i -g ."
     },
