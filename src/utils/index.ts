@@ -1,4 +1,5 @@
 import path from "path";
+import fs from "fs";
 import childProcess from 'child_process';
 
 /**
@@ -22,9 +23,16 @@ export const resolvePath = (...paths: string[]) => {
 
 export const getUserCurrentFolder = () => {
     return new Promise((resolve, reject) => {
-         childProcess.exec("pwd", (error:any, stdout:any, stderr:any) => {
-            resolve(stdout);
+         childProcess.exec("pwd", (error:any, stdout:string, stderr:any) => {
+            resolve(stdout.replace("\n", ""));
          });
     });
+}
+
+export const getAppVersion = () => {
+    const package_json_folder = path.resolve(__dirname, "../../package.json");
+    const content = fs.readFileSync(package_json_folder, "utf-8");
+    const jsonContent = JSON.parse(content);
+    return jsonContent.version;
 
 }

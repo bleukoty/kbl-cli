@@ -1,7 +1,7 @@
 import figlet from 'figlet';
 import gradient from 'gradient-string';
 import inquirer from 'inquirer';
-import { sleep } from '../utils';
+import { getAppVersion, sleep } from '../utils';
 
 // Settings
 const GREETINGS = "Welcome to kbl-cli";
@@ -23,8 +23,9 @@ export async function displayMainMenu() {
 
 // private function
 async function welcome() {
+    const version = getAppVersion();
     figlet(GREETINGS, (error: any, data: any) => {
-        console.log(gradient.pastel.multiline("Welcome to kbl-cli..."));
+        console.log(gradient.pastel.multiline(`Welcome to kbl-cli v${version}`));
     });
     await sleep();
 }
