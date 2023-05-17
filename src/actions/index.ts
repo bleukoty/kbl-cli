@@ -9,6 +9,7 @@ const CMD_FOLDER = path.resolve(__dirname, `../../cmd`);
 
 export async function createExpressApp(appName: string, appType: string, appPort = 3000) {
     
+    var spinnerInstall: any = "";
     try { 
         // 0. Variables initialization
         const CURRENT_USER_FOLDER = process.env.CURRENT_USER_FOLDER as string;
@@ -38,14 +39,17 @@ export async function createExpressApp(appName: string, appType: string, appPort
         spinnerCreation.success();
     
         // 5. init tsc and node project and install package express, @types/express
-        var spinnerInstall = nanospinner.createSpinner(`package install`);
+        spinnerInstall = nanospinner.createSpinner(`package install`);
         spinnerInstall.start();
         const init_express_app_cmd = "sh " + path.resolve(CMD_FOLDER, `init-express-app.sh ${APP_FOLDER}`);
-        childProcess.execSync(init_express_app_cmd);
-        spinnerInstall.success({text: `create successful ${appName} 🙂` });
-
+        await childProcess.exec(init_express_app_cmd, (error: any, stdout: any, stderr: any) => {
+            if(error != null) {
+                spinnerInstall.error({text: "build failed " + error});
+            } else {
+                spinnerInstall.success({text: `create successful ${appName} 🙂` });
+            }
+        });
     } catch(err: any) {
-        var spinnerInstall = nanospinner.createSpinner(`build failed`);
-        spinnerInstall.error({text: "build failed " + err});
+        console.log("error : ", err);
     }  
 }
