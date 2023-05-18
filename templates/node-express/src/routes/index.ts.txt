@@ -1,3 +1,0 @@
-import AuthenticationRoutes from "./authentication.routes";
-
-export { AuthenticationRoutes };

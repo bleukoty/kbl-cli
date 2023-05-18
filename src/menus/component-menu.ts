@@ -1,6 +1,4 @@
 import inquirer from 'inquirer';
-// Settings
-const GREETINGS = "Welcome to kbl-cli";
 
 export async function displayComponentMenu() {
     const query = await inquirer.prompt({

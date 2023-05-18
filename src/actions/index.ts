@@ -15,7 +15,7 @@ export async function createExpressApp(appName: string, appType: string, appPort
         const CURRENT_USER_FOLDER = process.env.CURRENT_USER_FOLDER as string;
         const APP_FOLDER = path.resolve(CURRENT_USER_FOLDER, appName);
         const APP_TEMPLATE = path.resolve(__dirname, `../../templates/${appType}`);
-        const APP_FOLDER_SRC_INDEX = path.resolve(APP_FOLDER, "src/index.ts");
+        const APP_FOLDER_ENV= path.resolve(APP_FOLDER, ".env");
         const APP_FOLDER_PACKAGE_JSON = path.resolve(APP_FOLDER, "package.json")
         
         // 1. create a folder
@@ -27,14 +27,14 @@ export async function createExpressApp(appName: string, appType: string, appPort
         fse.copySync(APP_TEMPLATE, APP_FOLDER);
 
         //3. rename all files with **/*.ts.txt or *.json.txt => *.ts or *.json
-        const renameFakeTxtFilesCmd = "sh " +path.resolve(CMD_FOLDER, `rename-fake-txt-files.sh ${APP_FOLDER}`); 
-        childProcess.execSync(renameFakeTxtFilesCmd);
+        // const renameFakeTxtFilesCmd = "sh " +path.resolve(CMD_FOLDER, `rename-fake-txt-files.sh ${APP_FOLDER}`); 
+        // childProcess.execSync(renameFakeTxtFilesCmd);
     
         //4. apply custom information like app_name, app_port, etc.
-        const substituteAppNameCmd = "sh " + path.resolve(CMD_FOLDER, `substitute-expression.sh app_name ${appName} ${APP_FOLDER_SRC_INDEX} ${APP_FOLDER_PACKAGE_JSON}` );
+        const substituteAppNameCmd = "sh " + path.resolve(CMD_FOLDER, `substitute-expression.sh app_name ${appName} ${APP_FOLDER_ENV} ${APP_FOLDER_PACKAGE_JSON}` );
         childProcess.execSync(substituteAppNameCmd);
     
-        const substituteAppPortCmd = "sh " + path.resolve(CMD_FOLDER, `substitute-expression.sh app_port ${appPort} ${APP_FOLDER_SRC_INDEX}` );
+        const substituteAppPortCmd = "sh " + path.resolve(CMD_FOLDER, `substitute-expression.sh app_port ${appPort} ${APP_FOLDER_ENV}` );
         childProcess.execSync(substituteAppPortCmd);
         spinnerCreation.success();
     

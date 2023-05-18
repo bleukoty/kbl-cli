@@ -22,7 +22,7 @@ export const resolvePath = (...paths: string[]) => {
 }
 
 export const getUserCurrentFolder = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
          childProcess.exec("pwd", (error:any, stdout:string, stderr:any) => {
             resolve(stdout.replace("\n", ""));
          });

@@ -24,8 +24,11 @@ export async function displayMainMenu() {
 // private function
 async function welcome() {
     const version = getAppVersion();
-    figlet(GREETINGS, (error: any, data: any) => {
-        console.log(gradient.pastel.multiline(`Welcome to kbl-cli v${version}`));
-    });
+    console.log(gradient.pastel.multiline(figlet.textSync(GREETINGS, {
+        horizontalLayout: "default",
+        verticalLayout: "default",
+        width: 80,
+        whitespaceBreak: true,
+      }))+ "v."+ version);
     await sleep();
 }
