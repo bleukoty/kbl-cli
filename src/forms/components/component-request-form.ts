@@ -1,7 +1,7 @@
 import inquirer from "inquirer";
-import { createRouterComponent } from "../../actions/components";
+import { createRouterComponent, createControllerComponent, createEntityComponent } from "../../actions/components";
 
-export const componentRequestForm = async (componentType: string) => {
+export const componentRequestForm = async (componentType: string, ormType: string) => {
     const { name: componentName} = await inquirer.prompt({
         name:"name",
         type:"input",
@@ -11,15 +11,18 @@ export const componentRequestForm = async (componentType: string) => {
         }
     });
 
+
     switch(componentType) {
         case "route": {
             await createRouterComponent(componentName);
             break;
         };
         case "controller": {
+            await createControllerComponent(componentName);
             break;
         };
         case "entity": {
+            await createEntityComponent(componentName, ormType);
             break;
         };
     }

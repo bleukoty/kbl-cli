@@ -1,6 +1,4 @@
 import inquirer from 'inquirer';
-// Settings
-const GREETINGS = "Welcome to kbl-cli";
 
 export async function displayConfigurationMenu() {
     const query = await inquirer.prompt({
@@ -11,6 +9,6 @@ export async function displayConfigurationMenu() {
         default() {
             return "nginx";
         }
-    })
+    });
     return query.componentType as string;
 }
