@@ -1,4 +1,5 @@
 import inquirer from 'inquirer';
+import {componentRequestForm} from '../forms/components/component-request-form';
 
 export async function displayComponentMenu() {
     const query = await inquirer.prompt({
@@ -9,6 +10,7 @@ export async function displayComponentMenu() {
         default() {
             return "route";
         }
-    })
+    });
+    await componentRequestForm(query.componentType);
     return query.componentType as string;
 }

@@ -1,5 +1,5 @@
 import inquirer from "inquirer";
-import { createExpressApp } from "../actions";
+import { createExpressApp } from "../../actions/apps";
 
 export const applicationRequestForm = async (appType: string) => {
   // please enter application name and port

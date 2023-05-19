@@ -2,10 +2,7 @@ import figlet from 'figlet';
 import gradient from 'gradient-string';
 import inquirer from 'inquirer';
 import { sleep } from '../utils';
-import { applicationRequestForm } from '../forms/application-request-form';
-
-// Settings
-const GREETINGS = "Welcome to kbl-cli";
+import { applicationRequestForm } from '../forms/apps/application-request-form';
 
 export async function displayAppMenu() {
     const appTypeQuery = await inquirer.prompt({

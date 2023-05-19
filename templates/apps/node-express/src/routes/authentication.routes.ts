@@ -3,10 +3,9 @@ import app from "../app";
 import { Error } from '../common/exceptions/error';
 
 const router = Express.Router();
-console.log("loaded authRouter");
 
 router.get("/sign-in", (req, res) => {
-  res.send({ data: null });
+  res.send("welcome to sign-in");
 });
 
 router.post("/sign-up", (req, res, next) => {
