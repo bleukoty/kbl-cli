@@ -34,5 +34,11 @@ export const getAppVersion = () => {
     const content = fs.readFileSync(package_json_folder, "utf-8");
     const jsonContent = JSON.parse(content);
     return jsonContent.version;
+}
 
+export function replaceExpression(filePath: string, expression: string, value: string) {
+    let content = fs.readFileSync(filePath, "utf-8");
+    const regExp =  new RegExp(expression, "g");
+    content = content.replace(regExp, value);
+    fs.writeFileSync(filePath, content, "utf-8");
 }

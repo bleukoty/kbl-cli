@@ -15,12 +15,13 @@ kbl-cli is an help-full tool who facilitate code generation for express and java
     kbl-cli
 ```
 
-### Goals achieved
+### Achieved Goals
 
 - Create a simple express app, customize with app's name and port 
+- Add Routes and Controller
 
 ### Road-map
 
-- Add Routes, Entities, and DataAccess
-- Add Security
-- Generates Api documentation
+- Add entity and database access
+- Add Security 
+- Generates Api documentation (05/20/2023)
