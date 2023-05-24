@@ -1,35 +1,27 @@
-#!/usr/bin/env node
+// import { Command } from "commander";
+// import { createExpressApp } from "./actions/apps";
+import { displayCLIMenu } from "./menu-prompt";
 
-import { displayMainMenu, displayAppMenu, displayConfigurationMenu, displayComponentMenu } from "./menus";
-import { getUserCurrentFolder } from "./utils";
+// const program = new Command();
 
+// program
+//   .name('kbl-cli')
+//   .description('CLI to create and manage express and java spring app.')
+//   .version('1.0.5');
 
+// program.command('create-express')
+//   .argument('<string>', 'Application name')
+//   .description('create an express app')
+//   .option('-p <string>','--port <string>', '3000')
+//   .action((appName, options) => {
+//     createExpressApp(appName, "node-express", parseInt(options.p));
+//   });
 
-async function start() {
-    
-    process.env.CURRENT_USER_FOLDER = await getUserCurrentFolder();
+// program
+//   .option('-m','--menu')
+//   .action(async () => {
+//     await displayCLIMenu();
+//   });
 
-    var exit = false;
-    var moduleChoice = "";
-    while (exit != true) {
-        moduleChoice = await displayMainMenu();
-        switch(moduleChoice) {
-            case "Application": {
-                await displayAppMenu(); break;
-            }
-            case "Configuration": {
-                await displayConfigurationMenu(); break;
-            }
-            case "Component": {
-                await displayComponentMenu(); break;
-            }
-        }
-        exit = true;
-    } 
-}
-
-start();
-
-
-
-
+// program.parse();
+displayCLIMenu();

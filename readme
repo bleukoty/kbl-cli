@@ -11,8 +11,17 @@ kbl-cli is an help-full tool who facilitate code generation for express and java
 ```
 
 ### Usage
+
+1. You can use menu option by enter :
+
 ```
-    kbl-cli
+    kbl-cli -m
+```
+or 
+
+2. You can directly use command-line by enter :
+```
+    kbl-cli create-express -p 4500 your_app_name
 ```
 
 ### Achieved Goals
@@ -24,4 +33,4 @@ kbl-cli is an help-full tool who facilitate code generation for express and java
 
 - Add entity and database access
 - Add Security 
-- Generates Api documentation (05/20/2023)
+- Generates Api documentation (05/26/2023)
