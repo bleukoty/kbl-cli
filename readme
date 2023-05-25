@@ -16,6 +16,8 @@ kbl-cli is an help-full tool who facilitate code generation for express and java
 
 ```
     kbl-cli -m
+    # or 
+    kbl-cli
 ```
 or 
 
