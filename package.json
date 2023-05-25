@@ -1,6 +1,6 @@
 {
     "name": "kbl-cli",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "an helpful cli for build a secure app",
     "main": "index.js",
     "scripts": {
