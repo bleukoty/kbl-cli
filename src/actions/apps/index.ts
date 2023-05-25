@@ -5,6 +5,7 @@ import childProcess from "child_process";
 import { replaceExpression } from "../../utils";
 import fse from "fs-extra";
 import nanospinner from 'nanospinner';
+import { getUserCurrentFolder } from "../../utils";
 
 
 export async function createExpressApp(appName: string, appType: string, appPort = 3000) {
@@ -12,18 +13,18 @@ export async function createExpressApp(appName: string, appType: string, appPort
     var spinnerInstall: any = "";
     try { 
         // 0. Variables initialization
-        const CURRENT_USER_FOLDER = process.env.CURRENT_USER_FOLDER as string;
+        const CURRENT_USER_FOLDER = await getUserCurrentFolder() as string;
         const APP_FOLDER = path.resolve(CURRENT_USER_FOLDER, appName);
         const APP_TEMPLATE = path.resolve(__dirname, `../../../templates/apps/${appType}`);
         const APP_FOLDER_ENV= path.resolve(APP_FOLDER, ".env");
         const APP_FOLDER_PACKAGE_JSON = path.resolve(APP_FOLDER, "package.json")
-        
+       
         // 1. create application folder
         var spinnerCreation = nanospinner.createSpinner(`create folder ${appName}`);
         spinnerCreation.start();
         fs.mkdirSync(APP_FOLDER);
         spinnerCreation.success({ text: `create folder ${appName}` });
-        
+
         // 2. duplicate express-app's template into current folder
         fse.copySync(APP_TEMPLATE, APP_FOLDER);
 
